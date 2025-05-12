@@ -1,0 +1,42 @@
+﻿@model Category
+
+
+
+@*Eger bir sayfa post edilecekse post edilecegi zaman barındıracagı bilgileri bir Form taginde barındırmalıdır...Yoksa sayfa post olamaz...
+
+ Html'de button tag'inin bir görevi vardır...Eger bir Form tag'inin icerisinde bulunuyorsa button tag'i otomatik olarak Form'un kuralarına göre sayfayı post etmekle görevlidir...
+
+ Post etmeye yarayan bu button'in tipi aslında submit'tir...Ama siz Form'unuzda yer alan bir button normal bir button olsun post ettirmesin isterseniz o buttonun post özelligini söyle kapatabilirsiniz...
+
+ <button type="button">Post ettirmez </button>
+
+ <input type="button" />
+
+
+
+*@
+
+<form asp-controller="Category" asp-action="CreateCategory" method="post">
+
+    <div>
+        <input type="text" asp-for="CategoryName" placeholder="Lutfen kategori ismi giriniz"  />
+    </div>
+    <br /> 
+
+    <div>
+        <input  type="text" asp-for="Description" placeholder="Aciklama giriniz"/>
+    </div>
+
+
+   @*  <div>
+        <input type="button" onclick="alert('hello world')" value="Tıkla"/>
+    </div> *@
+
+
+    <div>
+        <button  class="btn btn-primary">Kategori Ekle</button>
+    </div>
+
+
+</form>
+

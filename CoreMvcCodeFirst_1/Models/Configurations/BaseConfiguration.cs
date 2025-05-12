@@ -12,6 +12,8 @@ namespace CoreMvcCodeFirst_1.Models.Configurations
             //builder.Property(x => x.DeletedDate).HasColumnName("Silme Tarihi");
             //builder.Property(x => x.UpdatedDate).HasColumnName("Güncelleme Tarihi");
             //builder.Property(x => x.Status).HasColumnName("Veri Durumu");
+
+            builder.HasKey(x => x.BenimId);
         }
     }
 

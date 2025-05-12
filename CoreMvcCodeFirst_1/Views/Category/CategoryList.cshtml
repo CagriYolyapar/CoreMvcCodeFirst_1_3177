@@ -1,6 +1,14 @@
 ﻿@model List<Category>
 
+    @*Eger gideceginiz link aynı controller'daysa linkinize asp-controller taghelper'i vermek zorunda degilsiniz...*@
+
+    <h4>Yeni bir kategori eklemek icin <a asp-controller="Category" asp-action="CreateCategory">tıklayınız</a></h4>
+
+    <br /> <br />
+
 <table class="table table-hover table-primary">
+
+
 
 
     <thead>
@@ -22,11 +30,11 @@
         {
            <tr>
 
-               <td>@item.Id</td>
+               <td>@item.BenimId</td>
                <td>@item.CategoryName</td>
                <td>@item.Description</td>
-               <td></td>
-               <td></td>
+               <td> <a asp-controller="Category" asp-action="UpdateCategory" asp-route-id="@item.BenimId" class="btn btn-warning">Guncelle</a>    </td>
+               <td> <a asp-controller="Category" asp-action="DeleteCategory" asp-route-id="@item.BenimId" class="btn btn-danger">Sil</a>    </td>
 
            </tr>
         }

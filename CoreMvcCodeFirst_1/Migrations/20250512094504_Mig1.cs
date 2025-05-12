@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CoreMvcCodeFirst_1.Migrations
 {
     /// <inheritdoc />
-    public partial class _1 : Migration
+    public partial class Mig1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,7 +15,7 @@ namespace CoreMvcCodeFirst_1.Migrations
                 name: "AppUsers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    BenimId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -26,14 +26,14 @@ namespace CoreMvcCodeFirst_1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AppUsers", x => x.Id);
+                    table.PrimaryKey("PK_AppUsers", x => x.BenimId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    BenimId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -44,14 +44,14 @@ namespace CoreMvcCodeFirst_1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.BenimId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "AppUserProfiles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
+                    BenimId = table.Column<int>(type: "int", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -61,12 +61,12 @@ namespace CoreMvcCodeFirst_1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AppUserProfiles", x => x.Id);
+                    table.PrimaryKey("PK_AppUserProfiles", x => x.BenimId);
                     table.ForeignKey(
-                        name: "FK_AppUserProfiles_AppUsers_Id",
-                        column: x => x.Id,
+                        name: "FK_AppUserProfiles_AppUsers_BenimId",
+                        column: x => x.BenimId,
                         principalTable: "AppUsers",
-                        principalColumn: "Id",
+                        principalColumn: "BenimId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -74,7 +74,7 @@ namespace CoreMvcCodeFirst_1.Migrations
                 name: "Orders",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    BenimId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ShippingAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AppUserId = table.Column<int>(type: "int", nullable: true),
@@ -85,19 +85,19 @@ namespace CoreMvcCodeFirst_1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x.Id);
+                    table.PrimaryKey("PK_Orders", x => x.BenimId);
                     table.ForeignKey(
                         name: "FK_Orders_AppUsers_AppUserId",
                         column: x => x.AppUserId,
                         principalTable: "AppUsers",
-                        principalColumn: "Id");
+                        principalColumn: "BenimId");
                 });
 
             migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    BenimId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UnitPrice = table.Column<decimal>(type: "money", nullable: false),
@@ -109,12 +109,12 @@ namespace CoreMvcCodeFirst_1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.PrimaryKey("PK_Products", x => x.BenimId);
                     table.ForeignKey(
                         name: "FK_Products_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
-                        principalColumn: "Id");
+                        principalColumn: "BenimId");
                 });
 
             migrationBuilder.CreateTable(
@@ -135,13 +135,13 @@ namespace CoreMvcCodeFirst_1.Migrations
                         name: "FK_OrderDetails_Orders_OrderId",
                         column: x => x.OrderId,
                         principalTable: "Orders",
-                        principalColumn: "Id",
+                        principalColumn: "BenimId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_OrderDetails_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
-                        principalColumn: "Id",
+                        principalColumn: "BenimId",
                         onDelete: ReferentialAction.Cascade);
                 });
 

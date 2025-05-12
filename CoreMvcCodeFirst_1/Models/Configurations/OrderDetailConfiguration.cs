@@ -9,7 +9,7 @@ namespace CoreMvcCodeFirst_1.Models.Configurations
         {
             base.Configure(builder);
 
-            builder.Ignore(x => x.Id);
+            builder.Ignore(x => x.BenimId);
             builder.HasKey(x => new
             {
                 x.OrderId,

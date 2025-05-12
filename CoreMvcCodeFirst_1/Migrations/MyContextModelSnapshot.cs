@@ -24,11 +24,11 @@ namespace CoreMvcCodeFirst_1.Migrations
 
             modelBuilder.Entity("CoreMvcCodeFirst_1.Models.Entities.AppUser", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("BenimId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BenimId"));
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -50,14 +50,14 @@ namespace CoreMvcCodeFirst_1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("BenimId");
 
                     b.ToTable("AppUsers");
                 });
 
             modelBuilder.Entity("CoreMvcCodeFirst_1.Models.Entities.AppUserProfile", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("BenimId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedDate")
@@ -80,18 +80,18 @@ namespace CoreMvcCodeFirst_1.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                    b.HasKey("BenimId");
 
                     b.ToTable("AppUserProfiles");
                 });
 
             modelBuilder.Entity("CoreMvcCodeFirst_1.Models.Entities.Category", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("BenimId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BenimId"));
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
@@ -113,18 +113,18 @@ namespace CoreMvcCodeFirst_1.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                    b.HasKey("BenimId");
 
                     b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("CoreMvcCodeFirst_1.Models.Entities.Order", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("BenimId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BenimId"));
 
                     b.Property<int?>("AppUserId")
                         .HasColumnType("int");
@@ -145,7 +145,7 @@ namespace CoreMvcCodeFirst_1.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                    b.HasKey("BenimId");
 
                     b.HasIndex("AppUserId");
 
@@ -181,11 +181,11 @@ namespace CoreMvcCodeFirst_1.Migrations
 
             modelBuilder.Entity("CoreMvcCodeFirst_1.Models.Entities.Product", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("BenimId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BenimId"));
 
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
@@ -209,7 +209,7 @@ namespace CoreMvcCodeFirst_1.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                    b.HasKey("BenimId");
 
                     b.HasIndex("CategoryId");
 
@@ -220,7 +220,7 @@ namespace CoreMvcCodeFirst_1.Migrations
                 {
                     b.HasOne("CoreMvcCodeFirst_1.Models.Entities.AppUser", "AppUser")
                         .WithOne("AppUserProfile")
-                        .HasForeignKey("CoreMvcCodeFirst_1.Models.Entities.AppUserProfile", "Id")
+                        .HasForeignKey("CoreMvcCodeFirst_1.Models.Entities.AppUserProfile", "BenimId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

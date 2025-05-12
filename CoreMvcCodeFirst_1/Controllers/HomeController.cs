@@ -1,4 +1,4 @@
-using CoreMvcCodeFirst_1.Models;
+﻿using CoreMvcCodeFirst_1.Models;
 using CoreMvcCodeFirst_1.Models.ContextClasses;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -17,7 +17,9 @@ namespace CoreMvcCodeFirst_1.Controllers
             
         }
 
-        public IActionResult Index(MyContext c)
+        //Actionlar'da bir parametre bulunuyorsa bu demektir ki o Action o parametreyi ModelBinding yöntemiyle veya get'teki route-data yöntemiyle alacaktır...
+
+        public IActionResult Index()
         {
           
             return View();
