@@ -35,5 +35,38 @@ namespace CoreMvcCodeFirst_1.Controllers
             _context.SaveChanges();
             return RedirectToAction("ProductList");
         }
+
+        public IActionResult UpdateProduct(int id)
+        {
+            ProductPageVm pVm = new()
+            {
+                Categories = _context.Categories.ToList(),
+                Product = _context.Products.Find(id)
+            };
+
+            return View(pVm);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateProduct(ProductPageVm pVm)
+        {
+            Product original = _context.Products.Find(pVm.Product.BenimId);
+            original.ProductName = pVm.Product.ProductName;
+            original.UnitPrice = pVm.Product.UnitPrice;
+            original.CategoryId = pVm.Product.CategoryId;
+            original.UpdatedDate = DateTime.Now;
+            original.Status = Models.Enums.DataStatus.Updated;
+            _context.SaveChanges();
+            return RedirectToAction("ProductList");
+        }
+
+        public IActionResult DeleteProduct(int id)
+        {
+            _context.Products.Remove(_context.Products.Find(id));
+            _context.SaveChanges();
+            return RedirectToAction("ProductList");
+        }
+
+
     }
 }

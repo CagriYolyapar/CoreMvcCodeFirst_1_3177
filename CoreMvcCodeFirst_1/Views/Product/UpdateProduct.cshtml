@@ -1,0 +1,29 @@
+﻿@model ProductPageVm
+
+<form asp-action="UpdateProduct" asp-controller="Product" method="post">
+
+    <input type="hidden" asp-for="Product.BenimId" />
+
+    <div>
+        <input asp-for="Product.ProductName" type="text" placeholder="İsim giriniz" />
+    </div>
+
+    <div>
+        <input asp-for="Product.UnitPrice" type="number" placeholder="Fiyat giriniz" />
+    </div>
+
+
+
+
+    <div>
+        <select asp-for="Product.CategoryId" asp-items='new SelectList(Model.Categories,"BenimId","CategoryName")'>
+            <option>Lutfen seciniz</option>
+        </select>
+    </div>
+
+    <div>
+        <button class="btn btn-primary">Guncelle</button>
+    </div>
+
+</form>
+
